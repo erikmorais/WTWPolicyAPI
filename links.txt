@@ -1,0 +1,17 @@
+Add Installer on dependency injection web qpi
+https://www.youtube.com/watch?v=ESdvXlrG9zQ
+
+
+
+Application most have in the model, the link to the ressource, so angular services can rende the component and get its model.
+https://www.youtube.com/watch?v=0CwGTcrGBwI
+
+use this example for async rest web api
+see part that access repository async use it
+https://stackoverflow.com/questions/31185072/effectively-use-async-await-with-asp-net-web-api
+
+
+https://docs.microsoft.com/en-us/aspnet/core/tutorials/getting-started-with-swashbuckle?view=aspnetcore-2.2&tabs=visual-studio
+
+https://code-maze.com/aspnetcore-webapi-best-practices/
+
