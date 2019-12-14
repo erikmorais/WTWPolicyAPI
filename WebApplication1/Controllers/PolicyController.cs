@@ -25,14 +25,14 @@ namespace WebApplication1.Controllers
 
         //TODO add methods to get/create/update/delete data from _repository
         [HttpGet]
-        [Route("V1/Policy")]
+        [Route("")]
         public async Task<IEnumerable<Policy>> Get()
         {
             return await _policyRepository.Get();
         }
 
         [HttpGet]
-        [Route("V1/Policy/{policyNumber}", Name = "GetByPolicyNumber")]
+        [Route("{policyNumber}", Name = "GetByPolicyNumber")]
         public async Task<ActionResult<Policy>> GetByPolicyNumber(int policyNumber)
         {
             var policy = await _policyRepository.GetByPolicyNumber(policyNumber);
@@ -47,12 +47,14 @@ namespace WebApplication1.Controllers
         }
 
 
-        [Route("V1/Policy")]
+       // [Route("edit")]
+        [Route("")]
         [HttpPut]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<ActionResult<Policy>> Update(Policy policy)
+        public async Task<ActionResult<Policy>> Update([FromBody]  Policy policy)
         {
+           // var policy = new Policy();
             var policyFound = await _policyRepository.GetByPolicyNumber(policy.PolicyNumber);
 
             if (policyFound == null)
@@ -75,7 +77,8 @@ namespace WebApplication1.Controllers
             }
         }
 
-        [Route("V1/Policy/Add")]
+        // [Route("add")
+        [Route("")]
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -96,6 +99,7 @@ namespace WebApplication1.Controllers
         /// Deletes a specific Policy.
         /// </summary>
         /// <param name="id"></param>      
+      //  [HttpDelete("delete/{policyNumber}")]
         [HttpDelete("{policyNumber}")]
         public async Task<IActionResult> Delete(int policyNumber)
         {

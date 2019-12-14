@@ -101,6 +101,7 @@ namespace WebApplication1.Data
 
         private readonly PolicyHolder _policyHolder1 = new PolicyHolder
         {
+            Id = 1,
             Name = "Dwayne Johnson",
             Age = 44,
             Gender = Gender.Male
@@ -108,6 +109,7 @@ namespace WebApplication1.Data
 
         private readonly PolicyHolder _policyHolder2 = new PolicyHolder
         {
+            Id = 2,
             Name = "John Cena",
             Age = 38,
             Gender = Gender.Male
@@ -115,6 +117,7 @@ namespace WebApplication1.Data
 
         private readonly PolicyHolder _policyHolder3 = new PolicyHolder
         {
+            Id = 3,
             Name = "Trish Stratus",
             Age = 42,
             Gender = Gender.Female

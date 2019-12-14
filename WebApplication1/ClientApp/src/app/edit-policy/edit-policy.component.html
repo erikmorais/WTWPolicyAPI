@@ -1,0 +1,51 @@
+<div class="col-lg-5">
+  <div class="well bs-component">
+    <form class="form-horizontal">
+      <fieldset>
+        <legend>Edit Policy</legend>
+
+        <div class="form-group">
+          <label for="inputPolicyNumber" class="col-lg-3 control-label">Policy Number</label>
+          <div class="col-lg-8">
+            <input type="text"  readonly class="form-control" id="policyNumber"  placeholder="Policy Number" [ngModel]="selectedPolicy.policyNumber" name="policyNumber">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="inputHolderId" class="col-lg-3 control-label">Policy Holder Id</label>
+          <div class="col-lg-8">
+            <input type="text" readonly  class="form-control" id="policyHolder.id" placeholder="Policy Holder Id" [ngModel]="selectedPolicy.policyHolder.id" name="policyHolder.id">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="inputHolderName" class="col-lg-3 control-label">Name</label>
+          <div class="col-lg-8">
+            <input type="text" class="form-control" id="policyHolder.name" placeholder="Holder Name" [(ngModel)]="selectedPolicy.policyHolder.name" name="policyHolder.name">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="inputHolderAge" class="col-lg-3 control-label">Age</label>
+          <div class="col-lg-8">
+            <input type="text" class="form-control" id="policyHolder.age" placeholder="Holder Age" [(ngModel)]="selectedPolicy.policyHolder.age" name="policyHolder.age">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="inputHolderGender" class="col-lg-3 control-label">gender</label>
+          <select class="form-control" id="policyHolder.gender" [(ngModel)]="selectedPolicy.policyHolder.gender" name="policyHolder.gender" required>
+            <option value=0>Male</option>
+            <option value=1>Female</option>
+          </select>
+        </div>
+
+
+        <div class="form-group">
+          <div class="col-lg-8 col-lg-offset-3">
+            <button type="button" class="btn btn-primary" (click)="saveChanges()">Save</button>
+          </div>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</div>

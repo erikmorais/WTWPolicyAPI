@@ -1,0 +1,54 @@
+<div class="col-lg-5">
+  <div class="well bs-component">
+    <form #addPolicyForm="ngForm" (ngSubmit)="savePolicy(addPolicyForm.value)" class="form-horizontal">
+      <fieldset>
+        <legend>Add New Policy</legend>
+        <div class="form-group">
+          <label for="inputPolicyNumber" class="col-lg-3 control-label">Policy Number</label>
+          <div class="col-lg-8">
+            <input type="text" class="form-control" id="policyNumber" placeholder="Policy Number" name="policyNumber" ngModel>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="inputHolderId" class="col-lg-3 control-label">Author</label>
+          <div class="col-lg-8">
+            <input type="text" class="form-control" id="policyHolderId" placeholder="Policy Holder Id" name="policyHolderId" ngModel>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="inputHolderName" class="col-lg-3 control-label">Name</label>
+          <div class="col-lg-8">
+            <input type="text" class="form-control" id="holderName" placeholder="Holder Name" name="policyHolder.name" ngModel>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="inputHolderAge" class="col-lg-3 control-label">Age</label>
+          <div class="col-lg-8">
+            <input type="text" class="form-control" id="age" placeholder="Holder Age" name="policyHolder.age" ngModel>
+          </div>
+        </div>
+
+        <!--<div class="form-group">
+          <label for="inputHolderGender" class="col-lg-3 control-label">gender</label>
+          <div class="col-lg-8">
+            <input type="text" class="form-control" id="gender" placeholder="Holder Gender" name="policyHolder.gender" ngModel>
+          </div>
+        </div>-->
+
+        <div class="form-group">
+          <label for="inputHolderGender" class="col-lg-3 control-label">gender</label>
+          <select class="form-control" id="id" [(ngModel)]="policyHolder.gender" name="policyHolder.gender" required>
+            <option value="M">Male</option>
+            <option value="F">Female</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <div class="col-lg-8 col-lg-offset-3">
+            <button type="submit" class="btn btn-primary">Save</button>
+          </div>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</div>

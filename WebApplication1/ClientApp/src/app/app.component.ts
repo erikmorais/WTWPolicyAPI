@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'ClientApp';
+  title = 'WTW Policy';
+  subtitle = " Test for job dream - by Erik Morais";
 }
