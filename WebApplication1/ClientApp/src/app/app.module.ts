@@ -11,6 +11,8 @@ import { AddPolicyComponent } from '../app/add-policy/add-policy.component';
 import { EditPolicyComponent } from '../app/edit-policy/edit-policy.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AppRoutingModule } from './app-routing.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+//import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations:
@@ -20,11 +22,15 @@ import { AppRoutingModule } from './app-routing.module';
       DashboardComponent
     ],
   imports:
-    [ HttpClientModule,
+    [
       BrowserModule,
+      HttpClientModule,
       AppRoutingModule,
       FormsModule,
       CoreModule
+      //,
+      //BrowserAnimationsModule,
+      //ToastrModule.forRoot()
       ],
   providers: [],
   bootstrap: [AppComponent]

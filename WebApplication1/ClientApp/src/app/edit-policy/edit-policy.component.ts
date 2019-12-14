@@ -35,14 +35,6 @@ export class EditPolicyComponent implements OnInit {
   }
 
 
-  //saveChanges(): void {
-  //  let policy: Policy = this.selectedPolicy;
-
-  //  console.log(policy);
-  //  console.warn('Save policy not yet implemented.');
-  //}
-
-
   saveChanges():void {
     if (this.selectedPolicy) {
       this.selectedPolicy.policyHolderId = this.selectedPolicy.policyHolder.id;
@@ -53,10 +45,7 @@ export class EditPolicyComponent implements OnInit {
         },
         (err: PolicyTrackerError) => console.log(err.friendlyMessage),
         () => this.loggerService.log("update done")
-
       );
-
-      //this.selectedPolicy = undefined;
     }
   }
 

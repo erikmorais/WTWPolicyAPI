@@ -1,5 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Policy } from "../models/policy";
+import { DataService } from '../core/data.service';
+import { ActivatedRoute } from '@angular/router';
+import { LoggerService } from '../core/logger.service';
+import { PolicyTrackerError } from '../models/policyTrackerError';
+import { PolicyHolder } from '../models/policyHolder';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-add-policy',
@@ -9,32 +15,36 @@ import { Policy } from "../models/policy";
 export class AddPolicyComponent implements OnInit {
 
   genders: any;
-  constructor() { }
+  constructor(private route: ActivatedRoute,
+    private dataService: DataService,
+    private loggerService: LoggerService) { }
 
   ngOnInit() {
-    this.getGenders();
   }
 
-  savePolicy(formValues: any): void {
-    let newPolicy: Policy = <Policy>formValues;
-    // newPolicy.policyNumber = 0;
-    console.log(newPolicy);
-    console.warn('Save new book not yet implemented.');
+  formDto(formValues: NgForm): Policy {
+    let policy: Policy = new Policy();
+    policy.policyHolder = new PolicyHolder();
+    policy.policyNumber = Number(formValues['policyNumber']);
+    policy.policyHolder.name = formValues['policyHolder_name'];
+    policy.policyHolderId = Number(formValues['policyHolder_id']);
+    policy.policyHolder.id = Number(formValues['policyHolder_id']);
+    policy.policyHolder.age = Number(formValues['policyHolder_age']);
+    policy.policyHolder.gender = formValues['policyHolder_gender'];
+    return policy;
   }
+  addPolicy(formValues: NgForm): void {
 
-  getGenders(): void {
-    this.genders = [
-        {
-          "Id": "M",
-          "Name": "Male"
+    let addPolicy: Policy = this.formDto(formValues);
+
+    this.dataService.addPolicy(addPolicy)
+      .subscribe((data: Policy) => {
       },
-      {
-        "Id": "F",
-        "Name": "Female"
-      },  
-
-    ]
-
+        (err: PolicyTrackerError) => console.log(err.friendlyMessage),
+        () => this.loggerService.log("update done")
+      );
+    console.log(addPolicy);
   }
+
 
 }

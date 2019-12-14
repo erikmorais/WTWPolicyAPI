@@ -78,14 +78,15 @@ namespace WebApplication1.Controllers
         }
 
         // [Route("add")
-        [Route("")]
+        [Route("add")]
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<ActionResult<Policy>> Create(Policy policy)
+        public async Task<ActionResult<Policy>> Create([FromBody] Policy policy)
         {
             try
-            {
+            {   if (policy is null) throw new ArgumentNullException("wrong policy data received");
+
                 await _policyRepository.Add(policy);
                 return CreatedAtRoute("GetByPolicyNumber", new { policy.PolicyNumber }, policy);
             }

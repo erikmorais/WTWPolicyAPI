@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http';
+import { HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
@@ -11,6 +12,12 @@ import { allPolicy } from '../data';
 @Injectable()
 export class DataService {
 
+  //const httpOptions = {
+  //  headers: new HttpHeaders({
+  //    'Content-Type': 'application/json',
+  //    'Authorization': 'my-auth-token'
+  //  })
+  //}
   constructor(private loggerService: LoggerService,
               private http: HttpClient) { }
 
@@ -40,11 +47,35 @@ export class DataService {
   //////// Save methods //////////
 
   /** POST: add a new policy to the database */
-  addPolicy(policy: Policy): Observable<Policy | PolicyTrackerError> {
-    return this.http.post<Policy>('/api/policy/', policy)
-      .pipe(
-        catchError(this.handleError)
-      );
+  addPolicy(policy: Policy): Observable<Policy> {
+
+    let body: string = JSON.stringify(policy);
+    let params = new HttpParams().set('params', body);
+    console.log(params);
+    let headers = new HttpHeaders().set('Content-type', 'application/json');
+   // let header =new  RequestOptions({});
+    policy.policyHolderId = policy.policyHolder.id;
+    return this.http.post<Policy>('/api/policy/add', policy, {
+      headers: headers,
+      params
+    });
+
+    //  , {
+    //  headers: headers,
+    //  params
+    //})
+    //  .pipe(
+    //    catchError(error => {
+    //      return throwError("something went wrong!");
+    //    }
+    //    ));
+
+    return this.http.post<Policy>('/api/policy/add', JSON.stringify(policy), {
+      headers: { 'Content-Type': 'application/json; charset=utf-8' },
+    });
+      //.pipe(
+      //  catchError(this.handleError)
+      //);
   }
 
   /** DELETE: delete the hero from the server */

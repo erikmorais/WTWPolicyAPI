@@ -1,6 +1,6 @@
 <div class="col-lg-5">
   <div class="well bs-component">
-    <form #addPolicyForm="ngForm" (ngSubmit)="savePolicy(addPolicyForm.value)" class="form-horizontal">
+    <form #addPolicyForm="ngForm" (ngSubmit)="addPolicy(addPolicyForm.value)" class="form-horizontal">
       <fieldset>
         <legend>Add New Policy</legend>
         <div class="form-group">
@@ -10,36 +10,30 @@
           </div>
         </div>
         <div class="form-group">
-          <label for="inputHolderId" class="col-lg-3 control-label">Author</label>
+          <label for="inputHolderId" class="col-lg-3 control-label">Holder Id</label>
           <div class="col-lg-8">
-            <input type="text" class="form-control" id="policyHolderId" placeholder="Policy Holder Id" name="policyHolderId" ngModel>
+            <input type="text" class="form-control" id="policyHolder_id" placeholder="Policy Holder Id" name="policyHolder_id" ngModel>
           </div>
         </div>
         <div class="form-group">
           <label for="inputHolderName" class="col-lg-3 control-label">Name</label>
           <div class="col-lg-8">
-            <input type="text" class="form-control" id="holderName" placeholder="Holder Name" name="policyHolder.name" ngModel>
+            <input type="text" class="form-control" id="policyHolder_name" placeholder="Holder Name" name="policyHolder_name" ngModel>
           </div>
         </div>
+
         <div class="form-group">
           <label for="inputHolderAge" class="col-lg-3 control-label">Age</label>
           <div class="col-lg-8">
-            <input type="text" class="form-control" id="age" placeholder="Holder Age" name="policyHolder.age" ngModel>
+            <input type="text" class="form-control" id="policyHolder_age" placeholder="Holder Age" name="policyHolder_age" ngModel>
           </div>
         </div>
 
-        <!--<div class="form-group">
-          <label for="inputHolderGender" class="col-lg-3 control-label">gender</label>
-          <div class="col-lg-8">
-            <input type="text" class="form-control" id="gender" placeholder="Holder Gender" name="policyHolder.gender" ngModel>
-          </div>
-        </div>-->
-
         <div class="form-group">
           <label for="inputHolderGender" class="col-lg-3 control-label">gender</label>
-          <select class="form-control" id="id" [(ngModel)]="policyHolder.gender" name="policyHolder.gender" required>
-            <option value="M">Male</option>
-            <option value="F">Female</option>
+          <select  #selCombo class="form-control" id="policyHolder_gender" name="policyHolder_gender" required  ngModel>
+            <option [ngValue] ="M" value=0>Male</option>
+            <option [ngValue] ="F" value=1>Female</option>
           </select>
         </div>
 

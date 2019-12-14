@@ -46,8 +46,16 @@ export class DashboardComponent implements OnInit {
     console.warn(`Delete book not yet implemented (bookID: ${bookID}).`);
   }
 
-  deleteReader(readerID: number): void {
-    console.warn(`Delete reader not yet implemented (readerID: ${readerID}).`);
+  deletePolicy(policyNumber: number): void {
+
+    this.dataService.deletePolicy(policyNumber)
+      .subscribe((data: Policy) => {
+        var idx = this.allPolicy.findIndex(a => a.policyNumber == policyNumber);
+        this.allPolicy.splice(idx, 1);
+        },
+          (err: PolicyTrackerError) => console.log(err.friendlyMessage),
+          () => this.loggerService.log("delete done")
+        );
   }
 
 }
