@@ -7,6 +7,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  navbarCollapsed = true;
+
   title = 'WTW Policy';
   subtitle = " Test for job dream - by Erik Morais";
+
+  toggleNavbarCollapse() {
+    this.navbarCollapsed = !this.navbarCollapsed;
+  }
 }
+

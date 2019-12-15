@@ -15,3 +15,5 @@ https://docs.microsoft.com/en-us/aspnet/core/tutorials/getting-started-with-swas
 
 https://code-maze.com/aspnetcore-webapi-best-practices/
 
+toast component
+https://blog.jscrambler.com/how-to-create-angular-toastr-notifications/

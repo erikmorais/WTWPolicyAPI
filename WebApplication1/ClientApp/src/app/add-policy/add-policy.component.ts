@@ -6,6 +6,7 @@ import { LoggerService } from '../core/logger.service';
 import { PolicyTrackerError } from '../models/policyTrackerError';
 import { PolicyHolder } from '../models/policyHolder';
 import { NgForm } from '@angular/forms';
+import { ReactiveFormsModule} from '@angular/forms';
 
 @Component({
   selector: 'app-add-policy',
@@ -15,11 +16,13 @@ import { NgForm } from '@angular/forms';
 export class AddPolicyComponent implements OnInit {
 
   genders: any;
+  newPolicy: Policy;
   constructor(private route: ActivatedRoute,
     private dataService: DataService,
     private loggerService: LoggerService) { }
 
   ngOnInit() {
+    this.newPolicy = new Policy();
   }
 
   formDto(formValues: NgForm): Policy {
@@ -39,6 +42,7 @@ export class AddPolicyComponent implements OnInit {
 
     this.dataService.addPolicy(addPolicy)
       .subscribe((data: Policy) => {
+       // this.notificationService.showSuccess("Policy number:" + data.policyNumber.toString(), "New Policy added");
       },
         (err: PolicyTrackerError) => console.log(err.friendlyMessage),
         () => this.loggerService.log("update done")
