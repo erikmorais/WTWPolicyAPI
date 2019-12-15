@@ -50,6 +50,7 @@ export class DashboardComponent implements OnInit {
       .subscribe((data: Policy) => {
         var idx = this.allPolicy.findIndex(a => a.policyNumber == policyNumber);
         this.allPolicy.splice(idx, 1);
+        this.selectedPolicy = null;
         },
           (err: PolicyTrackerError) => console.log(err.friendlyMessage),
           () => this.loggerService.log("delete done")

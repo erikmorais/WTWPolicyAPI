@@ -2,54 +2,58 @@
 <div class="jumbotron">
   <div class="container">
     <div class="row">
-      <div class="col-md-6 offset-md-3">
-        <h3>Edit Policy</h3>
-        <form [formGroup]="apolicyForm" >
-          <div class="form-group">
-            <label>Policy Number</label>
-            <input type="number" formControlName="policyNumber" disabled [(ngModel)]="selectedPolicy.policyNumber" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.policyNumber.errors }" />
-            <div *ngIf="submitted && f.policyNumber.errors" class="invalid-feedback">
-              <div *ngIf="f.policyNumber.errors.required">PolicyNumber is required</div>
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <h3 class="panel-title">Edit Policy</h3>
+        </div>
+        <div class="panel-body">
+          <form [formGroup]="apolicyForm">
+            <div class="form-group">
+              <label>Policy Number</label>
+              <input type="number" formControlName="policyNumber" disabled [(ngModel)]="selectedPolicy.policyNumber" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.policyNumber.errors }" />
+              <div *ngIf="submitted && f.policyNumber.errors" class="invalid-feedback">
+                <div *ngIf="f.policyNumber.errors.required">PolicyNumber is required</div>
+              </div>
             </div>
-          </div>
-          <div class="form-group">
-            <label>Policy Holder Id </label>
-            <input type="number" formControlName="policyHolder_id" disabled [(ngModel)]="selectedPolicy.policyHolder.id"  class="form-control" [ngClass]="{ 'is-invalid': submitted && f.policyHolder_id.errors }" />
-            <div *ngIf="submitted && f.policyHolder_id.errors" class="invalid-feedback">
-              <div *ngIf="f.policyHolder_id.errors.required">Policy Holder id is required</div>
+            <div class="form-group">
+              <label>Policy Holder Id </label>
+              <input type="number" formControlName="policyHolder_id" disabled [(ngModel)]="selectedPolicy.policyHolder.id" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.policyHolder_id.errors }" />
+              <div *ngIf="submitted && f.policyHolder_id.errors" class="invalid-feedback">
+                <div *ngIf="f.policyHolder_id.errors.required">Policy Holder id is required</div>
+              </div>
             </div>
-          </div>
-          <div class="form-group">
-            <label>Name</label>
-            <input type="text" formControlName="policyHolder_name"  [(ngModel)]="selectedPolicy.policyHolder.name" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.policyHolder_name.errors }" />
-            <div *ngIf="submitted && f.policyHolder_name.errors" class="invalid-feedback">
-              <div *ngIf="f.policyHolder_name.errors.required">Name is required</div>
+            <div class="form-group">
+              <label>Name</label>
+              <input type="text" formControlName="policyHolder_name" [(ngModel)]="selectedPolicy.policyHolder.name" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.policyHolder_name.errors }" />
+              <div *ngIf="submitted && f.policyHolder_name.errors" class="invalid-feedback">
+                <div *ngIf="f.policyHolder_name.errors.required">Name is required</div>
+              </div>
             </div>
-          </div>
-          <div class="form-group">
-            <label>Age</label>
-            <input type="number" formControlName="policyHolder_age"  [(ngModel)]="selectedPolicy.policyHolder.age"  class="form-control" [ngClass]="{ 'is-invalid': submitted && f.policyHolder_age.errors }" />
-            <div *ngIf="submitted && f.policyHolder_age.errors" class="invalid-feedback">
-              <div *ngIf="f.policyHolder_age.errors.required">Age is required</div>
+            <div class="form-group">
+              <label>Age</label>
+              <input type="number" formControlName="policyHolder_age" [(ngModel)]="selectedPolicy.policyHolder.age" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.policyHolder_age.errors }" />
+              <div *ngIf="submitted && f.policyHolder_age.errors" class="invalid-feedback">
+                <div *ngIf="f.policyHolder_age.errors.required">Age is required</div>
+              </div>
             </div>
-          </div>
 
-          <div class="form-group">
-            <label for="inputHolderGender" class="col-lg-3 control-label">Gender</label>
-            <select class="form-control" formControlName="policyHolder_gender"   [(ngModel)]="selectedPolicy.policyHolder.gender"  [ngClass]="{ 'is-invalid': submitted && f.policyHolder_gender.errors }">
-              <option value=0>Male</option>
-              <option value=1>Female</option>
-            </select>
-            <div *ngIf="submitted && f.policyHolder_gender.errors" class="invalid-feedback">
-              <div *ngIf="f.policyHolder_gender.errors.required">Gender is required</div>
+            <div class="form-group">
+              <label for="inputHolderGender" class="col-lg-3 control-label">Gender</label>
+              <select class="form-control" formControlName="policyHolder_gender" [(ngModel)]="selectedPolicy.policyHolder.gender" [ngClass]="{ 'is-invalid': submitted && f.policyHolder_gender.errors }">
+                <option value=0>Male</option>
+                <option value=1>Female</option>
+              </select>
+              <div *ngIf="submitted && f.policyHolder_gender.errors" class="invalid-feedback">
+                <div *ngIf="f.policyHolder_gender.errors.required">Gender is required</div>
+              </div>
             </div>
-          </div>
 
-          <div class="form-group">
-            <button  (click)="onSubmit()" class="btn btn-primary">Save Policy</button>
-            <button  (click)="revert()" class="btn btn-warning pull-right">Revert Change</button>
-          </div>
-        </form>
+            <div class="form-group">
+              <button (click)="onSubmit()" class="btn btn-primary">Save Policy</button>
+              <button (click)="revert()" class="btn btn-warning pull-right">Revert Change</button>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   </div>

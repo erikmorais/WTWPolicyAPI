@@ -20,7 +20,7 @@
               </thead>
               <tbody>
                 <tr *ngFor='let policy of allPolicy'>
-                  <td>{{policy.policyNumber }}</td>
+                  <td>{{ policy.policyNumber }}</td>
                   <td> {{ policy.policyHolder.name }}</td>
                   <td>
                     <button class="btn btn-primary btn-sm" (click)="selectPolicy(policy)">Show details</button>
@@ -54,9 +54,7 @@
                   Gender:   {{selectedPolicy.policyHolder.gender}}
                 </p>
               </div>
-
             </div>
-
           </div>
         </div>
       </div>
