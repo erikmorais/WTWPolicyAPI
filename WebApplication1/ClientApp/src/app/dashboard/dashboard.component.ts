@@ -15,6 +15,7 @@ import { PolicyTrackerError } from '../models/policyTrackerError';
 export class DashboardComponent implements OnInit {
 
   allPolicy: Policy[];
+  selectedPolicy: Policy;
 
   constructor(private loggerService: LoggerService,
     private dataService: DataService,
@@ -37,14 +38,11 @@ export class DashboardComponent implements OnInit {
    // throw new Error('Ugly technical error!');
   }
 
-  private async getAuthorRecommendationAsync(readerID: number): Promise<void> {
-    //let author: string = await this.dataService.getAuthorRecommendation(readerID);
-    //this.loggerService.log(author);
+
+ selectPolicy(policy:Policy) {
+   this.selectedPolicy = policy;
   }
 
-  deleteBook(bookID: number): void {
-    console.warn(`Delete book not yet implemented (bookID: ${bookID}).`);
-  }
 
   deletePolicy(policyNumber: number): void {
 
