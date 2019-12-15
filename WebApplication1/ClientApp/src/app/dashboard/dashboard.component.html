@@ -2,7 +2,7 @@
 
   <div class="container">
     <div class="row">
-      <div class="col-lg-4">
+      <div class="col-lg-8">
         <div class="panel panel-primary">
           <div class="panel-heading">
             <h3 class="panel-title">All Policy</h3>
@@ -51,7 +51,7 @@
                   Age:   {{selectedPolicy.policyHolder.age}}
                 </p>
                 <p class="card-text">
-                  Gender:   {{selectedPolicy.policyHolder.gender}}
+                  Gender:   {{selectedPolicy.policyHolder.gender==0 ? 'Male' : 'Female'}}
                 </p>
               </div>
             </div>

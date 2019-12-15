@@ -31,6 +31,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\WTW.App.Domain\WTW.App.Domain.csproj" />
+    <ProjectReference Include="..\WTW.App.Repository\WTW.App.Repository.csproj" />
   </ItemGroup>
 
   <ItemGroup>

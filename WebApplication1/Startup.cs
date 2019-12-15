@@ -8,6 +8,8 @@ using Microsoft.OpenApi.Models;
 using System;
 //using Microsoft.OpenApi.Models;
 using WebApplication1.Data;
+using WTW.App.Repository;
+using WTW.App.Repository.Contracts;
 using WTW.App.Web.Api.Factories;
 using WTW.App.Web.Api.Interfaces.Factories;
 using WTW.App.Web.Api.Interfaces.Services;
@@ -29,17 +31,7 @@ namespace WebApplication1
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddSingleton<IPolicyService, PolicyService>();
             services.AddSingleton<IPolicyExpressionFactory, PolicyExpressionFactory>();
-            // builder.RegisterAssemblyTypes(
-            //typeof(PhotoAlbumService).Assembly,
-            //typeof(AlbumRepository).Assembly)
-            //.Where(t =>
-            //    t.Name.EndsWith("Repository") ||
-            //    t.Name.EndsWith("Factory") ||
-            //    t.Name.EndsWith("Service"))
-            //.SingleInstance()
-            //.AsImplementedInterfaces();
-
-            // builder.Populate(services);
+            services.AddSingleton<IPolicyRepository, PolicyRepositoryListStorage>();
 
             services.AddSwaggerGen(c =>
             {
@@ -57,9 +49,6 @@ namespace WebApplication1
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-
-  
-
 
             if (env.IsDevelopment())
             {

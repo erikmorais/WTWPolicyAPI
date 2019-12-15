@@ -5,11 +5,15 @@ VisualStudioVersion = 15.0.28307.136
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WTW.App.Web.Api", "WebApplication1\WTW.App.Web.Api.csproj", "{F1C9D83B-BC3C-4977-B861-DAB5ABF7825C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WTW.App.Data", "PolicyRepository\WTW.App.Data.csproj", "{82E41AB0-ED19-4A6F-B3A3-2852191CF70E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WTW.App.Data", "PolicyRepository\WTW.App.Data.csproj", "{82E41AB0-ED19-4A6F-B3A3-2852191CF70E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WTW.App.Domain", "WTW.App.Domain\WTW.App.Domain.csproj", "{95E98462-9117-4BA0-9EAD-DBF31827B118}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WTW.App.Domain", "WTW.App.Domain\WTW.App.Domain.csproj", "{95E98462-9117-4BA0-9EAD-DBF31827B118}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WTW.app.Entity", "WTW.app.Entity\WTW.app.Entity.csproj", "{4C9309AF-DE0D-47A8-93D9-ED77D927852E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WTW.app.Entity", "WTW.app.Entity\WTW.app.Entity.csproj", "{4C9309AF-DE0D-47A8-93D9-ED77D927852E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WTW.App.Tests", "WTW.App.Tests\WTW.App.Tests.csproj", "{227C0963-0122-4EA7-AB18-F1B2FF8D2D7E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WTW.App.Repository", "WTW.App.Repository\WTW.App.Repository.csproj", "{EC52900B-8C5A-4256-9427-20105EE768F5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +37,14 @@ Global
 		{4C9309AF-DE0D-47A8-93D9-ED77D927852E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4C9309AF-DE0D-47A8-93D9-ED77D927852E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4C9309AF-DE0D-47A8-93D9-ED77D927852E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{227C0963-0122-4EA7-AB18-F1B2FF8D2D7E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{227C0963-0122-4EA7-AB18-F1B2FF8D2D7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{227C0963-0122-4EA7-AB18-F1B2FF8D2D7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{227C0963-0122-4EA7-AB18-F1B2FF8D2D7E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EC52900B-8C5A-4256-9427-20105EE768F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC52900B-8C5A-4256-9427-20105EE768F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC52900B-8C5A-4256-9427-20105EE768F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC52900B-8C5A-4256-9427-20105EE768F5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
