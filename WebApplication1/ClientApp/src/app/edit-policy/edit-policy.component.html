@@ -1,51 +1,56 @@
-<div class="col-lg-5">
-  <div class="well bs-component">
-    <form class="form-horizontal">
-      <fieldset>
-        <legend>Edit Policy</legend>
-
-        <div class="form-group">
-          <label for="inputPolicyNumber" class="col-lg-3 control-label">Policy Number</label>
-          <div class="col-lg-8">
-            <input type="text"  readonly class="form-control" id="policyNumber"  placeholder="Policy Number" [ngModel]="selectedPolicy.policyNumber" name="policyNumber">
+<!-- main app container -->
+<div class="jumbotron">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <h3>Edit Policy</h3>
+        <form [formGroup]="apolicyForm" (ngSubmit)="onSubmit()">
+          <div class="form-group">
+            <label>Policy Number</label>
+            <input type="number" formControlName="policyNumber" [ngModel]="selectedPolicy.policyNumber" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.policyNumber.errors }" />
+            <div *ngIf="submitted && f.policyNumber.errors" class="invalid-feedback">
+              <div *ngIf="f.policyNumber.errors.required">PolicyNumber is required</div>
+            </div>
           </div>
-        </div>
-
-        <div class="form-group">
-          <label for="inputHolderId" class="col-lg-3 control-label">Policy Holder Id</label>
-          <div class="col-lg-8">
-            <input type="text" readonly  class="form-control" id="policyHolder.id" placeholder="Policy Holder Id" [ngModel]="selectedPolicy.policyHolder.id" name="policyHolder.id">
+          <div class="form-group">
+            <label>Policy Holder Id </label>
+            <input type="number" formControlName="policyHolder_id" [ngModel]="selectedPolicy.policyHolder.id"  class="form-control" [ngClass]="{ 'is-invalid': submitted && f.policyHolder_id.errors }" />
+            <div *ngIf="submitted && f.policyHolder_id.errors" class="invalid-feedback">
+              <div *ngIf="f.policyHolder_id.errors.required">Policy Holder id is required</div>
+            </div>
           </div>
-        </div>
-
-        <div class="form-group">
-          <label for="inputHolderName" class="col-lg-3 control-label">Name</label>
-          <div class="col-lg-8">
-            <input type="text" class="form-control" id="policyHolder.name" placeholder="Holder Name" [(ngModel)]="selectedPolicy.policyHolder.name" name="policyHolder.name">
+          <div class="form-group">
+            <label>Name</label>
+            <input type="text" formControlName="policyHolder_name"  [ngModel]="selectedPolicy.policyHolder.name" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.policyHolder_name.errors }" />
+            <div *ngIf="submitted && f.policyHolder_name.errors" class="invalid-feedback">
+              <div *ngIf="f.policyHolder_name.errors.required">Name is required</div>
+            </div>
           </div>
-        </div>
-        <div class="form-group">
-          <label for="inputHolderAge" class="col-lg-3 control-label">Age</label>
-          <div class="col-lg-8">
-            <input type="text" class="form-control" id="policyHolder.age" placeholder="Holder Age" [(ngModel)]="selectedPolicy.policyHolder.age" name="policyHolder.age">
+          <div class="form-group">
+            <label>Age</label>
+            <input type="number" formControlName="policyHolder_age"  [ngModel]="selectedPolicy.policyHolder.age"  class="form-control" [ngClass]="{ 'is-invalid': submitted && f.policyHolder_age.errors }" />
+            <div *ngIf="submitted && f.policyHolder_age.errors" class="invalid-feedback">
+              <div *ngIf="f.policyHolder_age.errors.required">Age is required</div>
+            </div>
           </div>
-        </div>
 
-        <div class="form-group">
-          <label for="inputHolderGender" class="col-lg-3 control-label">gender</label>
-          <select class="form-control" id="policyHolder.gender" [(ngModel)]="selectedPolicy.policyHolder.gender" name="policyHolder.gender" required>
-            <option value=0>Male</option>
-            <option value=1>Female</option>
-          </select>
-        </div>
-
-
-        <div class="form-group">
-          <div class="col-lg-8 col-lg-offset-3">
-            <button type="button" class="btn btn-primary" (click)="saveChanges()">Save</button>
+          <div class="form-group">
+            <label for="inputHolderGender" class="col-lg-3 control-label">Gender</label>
+            <select class="form-control" formControlName="policyHolder_gender"   [ngModel]="selectedPolicy.policyHolder.gender"  [ngClass]="{ 'is-invalid': submitted && f.policyHolder_gender.errors }">
+              <option value=0>Male</option>
+              <option value=1>Female</option>
+            </select>
+            <div *ngIf="submitted && f.policyHolder_gender.errors" class="invalid-feedback">
+              <div *ngIf="f.policyHolder_gender.errors.required">Gender is required</div>
+            </div>
           </div>
-        </div>
-      </fieldset>
-    </form>
+
+          <div class="form-group">
+            <button class="btn btn-primary">Save Policy</button>
+          </div>
+        </form>
+      </div>
+    </div>
   </div>
 </div>
+
