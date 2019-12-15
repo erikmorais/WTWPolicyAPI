@@ -1,16 +1,23 @@
-<div class="container">
-  <div class="row">
-    <div class="col-lg-4">
-      <div class="panel panel-primary">
-        <div class="panel-heading">
-          <h3 class="panel-title">All Policy</h3>
-        </div>
-        <div class="panel-body">
-        <li *ngFor='let policy of allPolicy'>
-          <i>{{policy.policyNumber}}</i>
-          <a [routerLink]="['/editpolicy', policy.policyNumber]"> Edit </a>
-          <a (click)="deletePolicy(policy.policyNumber)">Delete</a>
-        </li>
+<div class="jumbotron">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4">
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+            <h3 class="panel-title">All Policy</h3>
+          </div>
+          <div class="panel-body">
+            <li *ngFor='let policy of allPolicy'>
+              <i>{{policy.policyNumber}}</i>
+              <!--<a [routerLink]="['/editpolicy', policy.policyNumber]"> Edit </a>
+              <a (click)="deletePolicy(policy.policyNumber)">Delete</a>-->
+              <button [routerLink]="['/editpolicy', policy.policyNumber]" class="btn btn-primary btn-sm"> Edit </button>
+           
+              <button align="center" (click)="deletePolicy(policy.policyNumber)" type="button" class="btn btn-danger btn-sm pull-right">
+                <span class="glyphicon glyphicon-remove"></span> 
+              </button>
+            </li>
+          </div>
         </div>
       </div>
     </div>

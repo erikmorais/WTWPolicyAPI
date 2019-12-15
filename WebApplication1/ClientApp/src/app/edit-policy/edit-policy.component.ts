@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Policy } from '../models/policy';
 import { ActivatedRoute } from '@angular/router';
@@ -16,11 +16,13 @@ export class EditPolicyComponent implements OnInit {
   apolicyForm: FormGroup;
   submitted = false;
   selectedPolicy: Policy;
+  revertPolicy: string;
 
-  constructor(private formBuilder: FormBuilder,
+  constructor(private cdRef: ChangeDetectorRef, 
+    private formBuilder: FormBuilder,
     private route: ActivatedRoute,
-    private dataService: DataService,
-    private loggerService: LoggerService) { }
+    private loggerService: LoggerService,
+    private dataService: DataService) { }
 
   ngOnInit() {
     this.apolicyForm = this.formBuilder.group({
@@ -31,6 +33,7 @@ export class EditPolicyComponent implements OnInit {
       policyHolder_gender: ['', Validators.required]
     });
 
+   // this.revertPolicy = Policy[];
     let policyNumber: number = parseInt(this.route.snapshot.params['policyNumber']);
 
     this.dataService.getPolicyByPolicyNumber(policyNumber)
@@ -38,6 +41,8 @@ export class EditPolicyComponent implements OnInit {
         (data: Policy) => {
           this.selectedPolicy = data;
           this.selectedPolicy.policyHolder = data.policyHolder;
+
+          this.revertPolicy = JSON.stringify(this.selectedPolicy);
         },
         (err: PolicyTrackerError) => console.log(err.friendlyMessage),
         () => this.loggerService.log("done")
@@ -45,6 +50,11 @@ export class EditPolicyComponent implements OnInit {
   }
   // convenience getter for easy access to form fields
   get f() { return this.apolicyForm.controls; }
+
+  revert(): void {
+    this.selectedPolicy = JSON.parse(this.revertPolicy); 
+    //this.cdRef.detectChanges();
+  }
 
   onSubmit() {
     this.submitted = true;
