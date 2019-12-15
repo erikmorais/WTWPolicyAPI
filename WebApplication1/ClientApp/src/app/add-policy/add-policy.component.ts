@@ -1,54 +1,76 @@
 import { Component, OnInit } from '@angular/core';
-import { Policy } from "../models/policy";
-import { DataService } from '../core/data.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Policy } from '../models/policy';
 import { ActivatedRoute } from '@angular/router';
+import { DataService } from '../core/data.service';
 import { LoggerService } from '../core/logger.service';
 import { PolicyTrackerError } from '../models/policyTrackerError';
 import { PolicyHolder } from '../models/policyHolder';
-import { NgForm } from '@angular/forms';
-import { ReactiveFormsModule} from '@angular/forms';
+
 
 @Component({
   selector: 'app-add-policy',
   templateUrl: './add-policy.component.html',
   styles: []
 })
-export class AddPolicyComponent implements OnInit {
 
-  genders: any;
+export class AddPolicyComponent implements OnInit {
+  apolicyForm: FormGroup;
+  submitted = false;
   newPolicy: Policy;
-  constructor(private route: ActivatedRoute,
+
+  constructor(private formBuilder: FormBuilder,
+    private route: ActivatedRoute,
     private dataService: DataService,
     private loggerService: LoggerService) { }
 
   ngOnInit() {
+    this.apolicyForm = this.formBuilder.group({
+      policyNumber: ['', Validators.required],
+      policyHolder_id: ['', Validators.required],
+      policyHolder_name: ['', Validators.required],
+      policyHolder_age: ['', Validators.required],
+      policyHolder_gender: ['', Validators.required]
+    });
+
     this.newPolicy = new Policy();
   }
+  // convenience getter for easy access to form fields
+  get f() { return this.apolicyForm.controls; }
 
-  formDto(formValues: NgForm): Policy {
+  onSubmit() {
+    this.submitted = true;
+
+    // stop here if form is invalid
+    if (this.apolicyForm.invalid) {
+      return;
+    }
+
     let policy: Policy = new Policy();
     policy.policyHolder = new PolicyHolder();
-    policy.policyNumber = Number(formValues['policyNumber']);
-    policy.policyHolder.name = formValues['policyHolder_name'];
-    policy.policyHolderId = Number(formValues['policyHolder_id']);
-    policy.policyHolder.id = Number(formValues['policyHolder_id']);
-    policy.policyHolder.age = Number(formValues['policyHolder_age']);
-    policy.policyHolder.gender = formValues['policyHolder_gender'];
-    return policy;
-  }
-  addPolicy(formValues: NgForm): void {
+    policy.policyNumber = Number(this.apolicyForm.controls['policyNumber'].value);
+    policy.policyHolder.name = this.apolicyForm.controls['policyHolder_name'].value;
+    policy.policyHolderId = Number(this.apolicyForm.controls['policyHolder_id'].value);
+    policy.policyHolder.id = Number(this.apolicyForm.controls['policyHolder_id'].value);
+    policy.policyHolder.age = Number(this.apolicyForm.controls['policyHolder_age'].value);
+    policy.policyHolder.gender = this.apolicyForm.controls['policyHolder_gender'].value;
 
-    let addPolicy: Policy = this.formDto(formValues);
-
-    this.dataService.addPolicy(addPolicy)
+    this.dataService.addPolicy(policy)
       .subscribe((data: Policy) => {
-       // this.notificationService.showSuccess("Policy number:" + data.policyNumber.toString(), "New Policy added");
+        // this.notificationService.showSuccess("Policy number:" + data.policyNumber.toString(), "New Policy added");
       },
         (err: PolicyTrackerError) => console.log(err.friendlyMessage),
         () => this.loggerService.log("update done")
-      );
-    console.log(addPolicy);
+    );
+
+    for (var name in this.apolicyForm.controls) {
+      this.apolicyForm.controls[name].setValue('');
+      this.apolicyForm.controls[name].setErrors(null);
+    }
+
+    console.log(policy);
+
+
+    //alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.apolicyForm.value))
   }
-
-
 }
