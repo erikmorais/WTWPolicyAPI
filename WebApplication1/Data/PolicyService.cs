@@ -35,13 +35,13 @@ namespace WebApplication1.Data
 
         public async Task<IEnumerable<Policy>> Get()
         {
-            return await _policyRepositor.Get();
+           return await _policyRepositor.Get();
         }
 
         public async Task Remove(int policyNumber)
         {
 
-            var policy = await _policyRepositor.GetSingle(_expressionFactory.PolicyByPolicynumber(policyNumber));
+            var policy = await _policyRepositor.Get(_expressionFactory.PolicyByPolicynumber(policyNumber));
 
             if (policy != null)
             {
@@ -52,8 +52,8 @@ namespace WebApplication1.Data
 
         public async Task<Policy> GetByPolicyNumber(int policyNumber)
         {
-            var policy = await _policyRepositor.GetSingle(_expressionFactory.PolicyByPolicynumber(policyNumber));
-            return policy;
+            var policy = await _policyRepositor.Get(_expressionFactory.PolicyByPolicynumber(policyNumber));
+            return policy.SingleOrDefault();
         }
 
     }

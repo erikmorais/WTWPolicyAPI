@@ -70,9 +70,9 @@ namespace WTW.App.Repository
             });
         }
 
-        public async Task<IEnumerable<Policy>> Get()
+        public async Task<IQueryable<Policy>> Get()
         {
-            return await Task.FromResult<IEnumerable<Policy>>(_policies);
+            return await Task.FromResult<IQueryable<Policy>>(_policies.AsQueryable());
         }
 
         public async Task Remove(int policyNumber)
@@ -90,17 +90,23 @@ namespace WTW.App.Repository
 
         }
 
-
-        public async Task<Policy> GetSingle(Expression<Func<Policy, bool>> expression)
+        public async Task<IQueryable<Policy>> Get(Expression<Func<Policy, bool>> expression)
         {
-            var policy = _policies.AsQueryable().FirstOrDefault(expression);
-            return await Task.FromResult<Policy>(policy);
+            var policies = _policies.AsQueryable().Where(expression);
+            return await Task.FromResult(policies);
         }
 
-        public Task<IEnumerable<Policy>> GetMany(Expression<Func<Policy, bool>> expression)
-        {
-            throw new NotImplementedException();
-        }
+
+        //public async Task<Policy> GetSingle(Expression<Func<Policy, bool>> expression)
+        //{
+        //    var policy = _policies.AsQueryable().FirstOrDefault(expression);
+        //    return await Task.FromResult<Policy>(policy);
+        //}
+
+        //public Task<IEnumerable<Policy>> GetMany(Expression<Func<Policy, bool>> expression)
+        //{
+        //    throw new NotImplementedException();
+        //}
 
         private readonly PolicyHolder _policyHolder1 = new PolicyHolder
         {
