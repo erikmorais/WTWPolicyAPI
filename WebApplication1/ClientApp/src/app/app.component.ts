@@ -10,7 +10,7 @@ export class AppComponent {
   navbarCollapsed = true;
 
   title = 'WTW Policy';
-  subtitle = " Test for job dream - by Erik Morais";
+  subtitle = " Test CRUD Web API - by Erik Morais";
 
   toggleNavbarCollapse() {
     this.navbarCollapsed = !this.navbarCollapsed;
